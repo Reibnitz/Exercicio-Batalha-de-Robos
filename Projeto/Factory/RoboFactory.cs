@@ -1,4 +1,5 @@
-﻿using Projeto.Models;
+﻿using Projeto.Interfaces;
+using Projeto.Models;
 using Projeto.Services;
 using System;
 using System.Collections.Generic;
@@ -10,9 +11,9 @@ namespace Projeto.Factory
 {
     public class RoboFactory
     {
-        public RespostaService<Robo> MakeRobo(string tipoRobo, string nomeRobo)
+        public RespostaService<IRobo> MakeRobo(string tipoRobo, string nomeRobo)
         {
-            RespostaService<Robo> service = new();
+            RespostaService<IRobo> service = new();
 
             switch (tipoRobo)
             {

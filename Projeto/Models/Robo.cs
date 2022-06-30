@@ -1,4 +1,5 @@
 ﻿using Projeto.Enum;
+using Projeto.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace Projeto.Models
 {
-    public abstract class Robo
+    public abstract class Robo : IRobo
     {
-        public string Nome { get; protected set; }
-        public int PontosDeVida { get; protected set; }
-        public EStatus Status { get; protected set; }
+        public virtual string Nome { get; protected set; }
+        public virtual int PontosDeVida { get; protected set; }
+        public virtual EStatus Status { get; protected set; }
 
         public Robo(string nome)
         {

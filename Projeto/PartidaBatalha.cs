@@ -1,4 +1,5 @@
 ﻿using Projeto.Enum;
+using Projeto.Interfaces;
 using Projeto.Models;
 using Projeto.Services;
 using System;
@@ -13,14 +14,14 @@ namespace Projeto
     {
         private static int LimiteDeRodadas;
         private static int RodadaAtual = 1;
-        private static Robo[] Robos;
+        private static IRobo[] Robos;
 
 
-        public static void Batalhar(RespostaService<Robo> robo1, RespostaService<Robo> robo2, int limiteDeRodadas = 15)
+        public static void Batalhar(RespostaService<IRobo> robo1, RespostaService<IRobo> robo2, int limiteDeRodadas = 15)
         {
             LimiteDeRodadas = limiteDeRodadas;
 
-            Robos = new Robo[]
+            Robos = new IRobo[]
             {
                 robo1.Resposta,
                 robo2.Resposta
@@ -31,7 +32,7 @@ namespace Projeto
 
             CausarDanos();
 
-            ResultadoService<Robo> resultado = DefinirResultado();
+            ResultadoService<IRobo> resultado = DefinirResultado();
             ImprimirResultado(resultado);
         }
 
@@ -66,7 +67,7 @@ namespace Projeto
             return new Random().Next(2);
         }
 
-        private static void ImprimirRodada(Robo primeiro, Robo segundo, int danoPrimeiro, int danoSegundo)
+        private static void ImprimirRodada(IRobo primeiro, IRobo segundo, int danoPrimeiro, int danoSegundo)
         {
             Console.WriteLine($"------------- {RodadaAtual}ª Rodada -------------");
             switch (danoPrimeiro)
@@ -92,9 +93,9 @@ namespace Projeto
             Console.WriteLine($"\nPlacar: {Robos[0].Nome} [{Robos[0].PontosDeVida}HP] x [{Robos[1].PontosDeVida}HP] {Robos[1].Nome}\n");
         }
 
-        private static ResultadoService<Robo> DefinirResultado()
+        private static ResultadoService<IRobo> DefinirResultado()
         {
-            ResultadoService<Robo> vencedor = new();
+            ResultadoService<IRobo> vencedor = new();
 
             if (RodadaAtual > LimiteDeRodadas && Robos[0].PontosDeVida == Robos[1].PontosDeVida)
             {
@@ -112,7 +113,7 @@ namespace Projeto
             return vencedor;
         }
 
-        private static void ImprimirResultado(ResultadoService<Robo> resultado)
+        private static void ImprimirResultado(ResultadoService<IRobo> resultado)
         {
             if (resultado.Empate)
                 Console.WriteLine("####### EMPATE! OS DOIS PERDERAM #######");
