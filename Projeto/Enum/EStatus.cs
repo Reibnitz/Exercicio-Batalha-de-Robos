@@ -1,4 +1,4 @@
-﻿namespace Projeto
+﻿namespace Projeto.Enum
 {
     public enum EStatus
     {

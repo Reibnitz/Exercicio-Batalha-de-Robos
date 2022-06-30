@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Projeto.Services
 {
-    public class Resultado<T>
+    public class ResultadoService<T>
     {
         public T Vencedor { get; set; }
         public bool Empate { get; set; }

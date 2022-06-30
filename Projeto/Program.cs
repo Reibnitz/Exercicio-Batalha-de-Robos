@@ -1,4 +1,5 @@
-﻿using Projeto.Factory;
+﻿using Projeto;
+using Projeto.Factory;
 using Projeto.Models;
 using Projeto.Services;
 

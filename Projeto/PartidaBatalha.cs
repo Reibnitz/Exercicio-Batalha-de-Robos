@@ -1,11 +1,13 @@
-﻿using Projeto.Models;
+﻿using Projeto.Enum;
+using Projeto.Models;
+using Projeto.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Projeto.Services
+namespace Projeto
 {
     public static class PartidaBatalha
     {
@@ -29,7 +31,7 @@ namespace Projeto.Services
 
             CausarDanos();
 
-            Resultado<Robo> resultado = DefinirResultado();
+            ResultadoService<Robo> resultado = DefinirResultado();
             ImprimirResultado(resultado);
         }
 
@@ -90,9 +92,9 @@ namespace Projeto.Services
             Console.WriteLine($"\nPlacar: {Robos[0].Nome} [{Robos[0].PontosDeVida}HP] x [{Robos[1].PontosDeVida}HP] {Robos[1].Nome}\n");
         }
 
-        private static Resultado<Robo> DefinirResultado()
+        private static ResultadoService<Robo> DefinirResultado()
         {
-            Resultado<Robo> vencedor = new();
+            ResultadoService<Robo> vencedor = new();
 
             if (RodadaAtual > LimiteDeRodadas && Robos[0].PontosDeVida == Robos[1].PontosDeVida)
             {
@@ -110,7 +112,7 @@ namespace Projeto.Services
             return vencedor;
         }
 
-        private static void ImprimirResultado(Resultado<Robo> resultado)
+        private static void ImprimirResultado(ResultadoService<Robo> resultado)
         {
             if (resultado.Empate)
                 Console.WriteLine("####### EMPATE! OS DOIS PERDERAM #######");
