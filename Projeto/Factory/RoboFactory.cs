@@ -27,7 +27,7 @@ namespace Projeto.Factory
                     break;
                 default:
                     service.Sucesso = false;
-                    service.MensagemErro = "Tipo de robô inválido";
+                    service.MensagemErro = $"O tipo determinado para o robô {nomeRobo} é inválido";
                     break;
             }
 

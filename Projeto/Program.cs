@@ -26,8 +26,17 @@ RespostaService<IRobo> robo2 = factory.MakeRobo(tipo2, nome2);
 Console.WriteLine("Defina o número de rodadas:");
 int rodadas = Convert.ToInt32(Console.ReadLine());
 
-Console.WriteLine("Pressione ENTER para começar a batalha!");
-Console.ReadLine();
-Console.Clear();
+if (robo1.Sucesso && robo2.Sucesso)
+{
+    Console.WriteLine("Pressione ENTER para começar a batalha!");
+    Console.ReadLine();
+    Console.Clear();
 
-PartidaBatalha.Batalhar(robo1, robo2, rodadas);
+    PartidaBatalha.Batalhar(robo1, robo2, rodadas);
+}
+
+else
+{
+    if (!robo1.Sucesso) Console.WriteLine(robo1.MensagemErro);
+    if (!robo2.Sucesso) Console.WriteLine(robo2.MensagemErro);
+}
